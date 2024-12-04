@@ -31,7 +31,7 @@ public class SportRepository {
             ResultSet rs = stmt.executeQuery("SELECT * FROM Sport WHERE id = " + id);
             while (rs.next()) {
 
-                oSport.setNome(rs.getString("nome"));
+                oSport.setNome(rs.getString("name"));
                 oSport.setNumeroGiocatori(rs.getInt("player_number"));
                 oSport.setId(rs.getInt("id"));
 
@@ -53,7 +53,7 @@ public class SportRepository {
             ResultSet rs = stmt.executeQuery("SELECT * FROM Sport ORDER BY id asc");
             while (rs.next()) {
                 Sport oSport = new Sport();
-                oSport.setNome(rs.getString("nome"));
+                oSport.setNome(rs.getString("name"));
                 oSport.setNumeroGiocatori(rs.getInt("player_number"));
                 oSport.setId(rs.getInt("id"));
                 listaSport.add(oSport);
@@ -84,7 +84,7 @@ public class SportRepository {
             Connection c = DbConnection.openConnection();
             //System.out.println("Connessione riuscita!");
             Statement stmt = c.createStatement();
-            stmt.execute("UPDATE Sport SET nome='"+oSport.getNome()+"', player_number='"+oSport.getNumeroGiocatori()+"' WHERE id ="  + oSport.getId());
+            stmt.execute("UPDATE Sport SET name='"+oSport.getNome()+"', player_number='"+oSport.getNumeroGiocatori()+"' WHERE id ="  + oSport.getId());
             System.out.println("model.dao.Sport aggiornato");
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println(e.getMessage());

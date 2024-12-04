@@ -11,6 +11,7 @@ public class OlimpiadeSportService {
     OlimpiadeSportRepository oOlimpiadeSportRepository = new OlimpiadeSportRepository();
     SportRepository oSportRepository = new SportRepository();
     OlimpiadeRepository oOlimpiadeRepository = new OlimpiadeRepository();
+
     public void create(int idOlimpiade, int idSport) {
         OlimpiadeSport oOlimpiadeSport = new OlimpiadeSport();
         Olimpiade oOlimpiade = oOlimpiadeRepository.readOlimpiadeByID(idOlimpiade);

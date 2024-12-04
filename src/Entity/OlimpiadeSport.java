@@ -16,6 +16,10 @@ public class OlimpiadeSport {
         return sport.getId();
     }
 
+    public String getSportNome() {
+        return sport.getNome();
+    }
+
     public void setSport(Sport sport) {
         this.sport = sport;
     }
@@ -24,6 +28,13 @@ public class OlimpiadeSport {
         return olimpiade.getId();
     }
 
+    public int getOlimpiadeAnno() {
+        return olimpiade.getAnno();
+    }
+
+    public String getOlimpiadePaeseOspitante() {
+        return olimpiade.getPaeseOspitante();
+    }
     public void setOlimpiade(Olimpiade olimpiade) {
         this.olimpiade = olimpiade;
     }

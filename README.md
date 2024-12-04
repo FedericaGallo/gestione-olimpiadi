@@ -1,3 +1,4 @@
+#Gestionale Olimpiadi
 Si vuole creare un database in grado di tenere traccia degli sport che si giocano alle olimpiadi e agli atleti che partecipano in tale olimpiade. Realizzare:
 1.	 lo schema E-R;
 2.	lo schema logico;
@@ -9,3 +10,29 @@ Si vuole creare un database in grado di tenere traccia degli sport che si giocan
 *	per ogni sport indicare il numero di atleti che  praticano tale sport;
 *	indicare i nomi degli sport  che hanno almeno  2 atleti che lo praticano;
 *	indicare i nomi  degli atleti  che sono più alti della media.
+
+## Entity
+### Sport
+* nome
+* numero giocatori
+* id
+### Atleta
+* nome
+* cognome
+* data di nascita
+* altezza
+* nazionalità
+* id
+### Olimpiade
+* anno
+* paese ospitante
+* id
+### Gara (olimpiade_sport)
+* id_olimpiadi
+* id_sport
+* id
+### Partecipazione (olimpiade_sport_atleta)
+* id_olimpiadi_sport
+* id_atleta
+* risultato
+* id

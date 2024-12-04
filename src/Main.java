@@ -366,13 +366,13 @@ public class Main {
     }
     //CRUD SPORT
     private static void readSport() {
-        System.out.println("ecco la lista dei docenti: ");
+        System.out.println("ecco la lista degli sport: ");
         SportService oSportService = new SportService();
         List<Sport> listaSport= oSportService.readSport();
 
         int i = 0;
         while(i<listaSport.size()){
-            System.out.println(listaSport.get(i).getId()+" ."+listaSport.get(i).getNome()+" numero giocatori:"+listaSport.get(i).getNumeroGiocatori());
+            System.out.println(listaSport.get(i).getId()+". "+listaSport.get(i).getNome()+" numero giocatori:"+listaSport.get(i).getNumeroGiocatori());
             i++;}
 
     }
@@ -416,7 +416,7 @@ public class Main {
 
         int i = 0;
         while(i<listaOlimpiadeSport.size()){
-            System.out.println(listaOlimpiadeSport.get(i).getId()+" "+listaOlimpiadeSport.get(i).getOlimpiadeId()+" "+listaOlimpiadeSport.get(i).getSportId());
+            System.out.println(listaOlimpiadeSport.get(i).getId()+". "+listaOlimpiadeSport.get(i).getOlimpiadeAnno()+" "+listaOlimpiadeSport.get(i).getOlimpiadePaeseOspitante()+" "+listaOlimpiadeSport.get(i).getSportNome());
             i++;}
 
     }
@@ -425,7 +425,7 @@ public class Main {
         System.out.println("inserisci id sport: ");
         Scanner scanner = new Scanner(System.in);
         int idSport = scanner.nextInt();
-        readSport();
+        readOlimpiade();
         System.out.println("inserisci id olimpiade: ");
         int idOlimpiade = scanner.nextInt();
         OlimpiadeSportService oOlimpiadeSportService = new OlimpiadeSportService();
@@ -446,9 +446,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("inserisci l'id della gara da modificare:");
         int id = scanner.nextInt();
+        readSport();
         System.out.println("inserisci id sport: ");
         int idSport = scanner.nextInt();
-        readSport();
+        readOlimpiade();
         System.out.println("inserisci id olimpiade: ");
         int idOlimpiade = scanner.nextInt();
         OlimpiadeSportService oOlimpiadeSportService = new OlimpiadeSportService();

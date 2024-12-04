@@ -17,7 +17,7 @@ public class OlimpiadeSportRepository {
             Connection c = DbConnection.openConnection();
             //System.out.println("Connessione riuscita!");
             Statement stmt = c.createStatement();
-            stmt.execute("INSERT INTO OlympicsSport VALUES('" + oOlimpiadeSport.getOlimpiadeId() + "','" + oOlimpiadeSport.getSportId() + "')");
+            stmt.execute("INSERT INTO olympics_sport VALUES('" + oOlimpiadeSport.getOlimpiadeId() + "','" + oOlimpiadeSport.getSportId() + "')");
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println(e.getMessage());
             System.exit(0);
@@ -60,7 +60,7 @@ public class OlimpiadeSportRepository {
             Connection c = DbConnection.openConnection();
             //System.out.println("Connessione riuscita!");
             Statement stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM OlympicsSport ORDER BY id asc");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM olympics_sport ORDER BY id asc");
             while (rs.next()) {
                 OlimpiadeSport oOlimpiadeSport = new OlimpiadeSport();
                 oOlimpiadeSport.setId(rs.getInt("id"));
@@ -76,13 +76,14 @@ public class OlimpiadeSportRepository {
         }
         return listaOlimpiadeSport;
     }
+
     public void deleteOlimpiadeSport(OlimpiadeSport oOlympicsSport) {
 
         try {
             Connection c = DbConnection.openConnection();
             //System.out.println("Connessione riuscita!");
             Statement stmt = c.createStatement();
-            stmt.execute("DELETE FROM OlympicsSport WHERE id = '" + oOlympicsSport.getId() + "'");
+            stmt.execute("DELETE FROM olympics_sport WHERE id = '" + oOlympicsSport.getId() + "'");
             System.out.println("model.dao.OlympicsSport eliminato");
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println(e.getMessage());
@@ -96,7 +97,7 @@ public class OlimpiadeSportRepository {
             Connection c = DbConnection.openConnection();
             //System.out.println("Connessione riuscita!");
             Statement stmt = c.createStatement();
-            stmt.execute("UPDATE OlympicsSport SET id_olympics='"+oOlympicsSport.getOlimpiadeId()+"', id_sport='"+oOlympicsSport.getSportId()+"' WHERE id ="  + oOlympicsSport.getId());
+            stmt.execute("UPDATE olympics_sport SET id_olympics='"+oOlympicsSport.getOlimpiadeId()+"', id_sport='"+oOlympicsSport.getSportId()+"' WHERE id ="  + oOlympicsSport.getId());
             System.out.println("model.dao.OlympicsSport aggiornato");
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println(e.getMessage());
