@@ -33,7 +33,7 @@ public class OlimpiadeSportRepository {
             Connection c = DbConnection.openConnection();
             //System.out.println("Connessione riuscita!");
             Statement stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM OlympicsSport WHERE id = " + id);
+            ResultSet rs = stmt.executeQuery("SELECT * FROM olympics_sport WHERE id = " + id);
             while (rs.next()) {
 
                 oOlimpiadeSport.setId(rs.getInt("id"));

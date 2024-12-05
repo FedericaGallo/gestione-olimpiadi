@@ -17,7 +17,7 @@ public class OlimpiadeSportAtletaRepository {
             Connection c = DbConnection.openConnection();
             //System.out.println("Connessione riuscita!");
             Statement stmt = c.createStatement();
-            stmt.execute("INSERT INTO OlympicsSportAthlete VALUES('" + oOlympicsSportAthlete.getAtletaId() + "','" + oOlympicsSportAthlete.getOlimpiadeSportId() + "')");
+            stmt.execute("INSERT INTO olympics_sport_athlete VALUES('" + oOlympicsSportAthlete.getAtletaId() + "','" + oOlympicsSportAthlete.getOlimpiadeSportId() + "')");
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println(e.getMessage());
             System.exit(0);
@@ -32,7 +32,7 @@ public class OlimpiadeSportAtletaRepository {
             Connection c = DbConnection.openConnection();
             //System.out.println("Connessione riuscita!");
             Statement stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM OlympicsSportAthlete WHERE id = " + id);
+            ResultSet rs = stmt.executeQuery("SELECT * FROM olympics_sport_athlete WHERE id = " + id);
             while (rs.next()) {
                 OlimpiadeSport olimpiadeSport = olimpiadeSportRepository.readOlimpiadeSportById(rs.getInt("id_olympics_sport"));
                 Atleta atleta = atletaRepository.readAtletaByID(rs.getInt("id_athleta"));
@@ -57,14 +57,15 @@ public class OlimpiadeSportAtletaRepository {
             Connection c = DbConnection.openConnection();
             //System.out.println("Connessione riuscita!");
             Statement stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM OlympicsSportAthlete ORDER BY id asc");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM olympics_sport_athlete ORDER BY id asc");
             while (rs.next()) {
                 OlimpiadeSportAtleta oOlimpiadeSportAtleta = new OlimpiadeSportAtleta();
-                Atleta oAtleta = atletaRepository.readAtletaByID(rs.getInt("id"));
+                Atleta oAtleta = atletaRepository.readAtletaByID(rs.getInt("id_athlete"));
                 oOlimpiadeSportAtleta.setAtleta(oAtleta);
                 OlimpiadeSport oOlimpiadeSport = olimpiadeSportRepository.readOlimpiadeSportById(rs.getInt("id_olympics_sport"));
                 oOlimpiadeSportAtleta.setOlimpiadeSport(oOlimpiadeSport);
                 oOlimpiadeSportAtleta.setResult(rs.getString("result"));
+                oOlimpiadeSportAtleta.setId(rs.getInt("id"));
                 listaOlimpiadeSportAtleta.add( oOlimpiadeSportAtleta);
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -79,7 +80,7 @@ public class OlimpiadeSportAtletaRepository {
             Connection c = DbConnection.openConnection();
             //System.out.println("Connessione riuscita!");
             Statement stmt = c.createStatement();
-            stmt.execute("DELETE FROM OlympicsSportAthlete WHERE id = '" + oOlimpiadeSportAtleta.getId() + "'");
+            stmt.execute("DELETE FROM olympics_sport_athlete WHERE id = '" + oOlimpiadeSportAtleta.getId() + "'");
             System.out.println("model.dao.OlympicsSportAthlete eliminato");
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println(e.getMessage());
@@ -93,7 +94,7 @@ public class OlimpiadeSportAtletaRepository {
             Connection c = DbConnection.openConnection();
             //System.out.println("Connessione riuscita!");
             Statement stmt = c.createStatement();
-            stmt.execute("UPDATE OlympicsSportAthlete SET id_olympics_sport='"+oOlimpiadeSportAtleta.getOlimpiadeSportId()+"', id_athlete='"+oOlimpiadeSportAtleta.getAtletaId()+"',result= '"+oOlimpiadeSportAtleta.getResult()+ "' WHERE id ="  + oOlimpiadeSportAtleta.getId());
+            stmt.execute("UPDATE olympics_sport_athlete SET id_olympics_sport='"+oOlimpiadeSportAtleta.getOlimpiadeSportId()+"', id_athlete='"+oOlimpiadeSportAtleta.getAtletaId()+"',result= '"+oOlimpiadeSportAtleta.getResult()+ "' WHERE id ="  + oOlimpiadeSportAtleta.getId());
             System.out.println("model.dao.OlympicsSportAthlete aggiornato");
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println(e.getMessage());

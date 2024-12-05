@@ -28,7 +28,7 @@ public class AtletaRepository {
             Connection c = DbConnection.openConnection();
             //System.out.println("Connessione riuscita!");
             Statement stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM AthleteTest WHERE id = " + id);
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Athlete WHERE id = " + id);
             while (rs.next()) {
 
                 oAthlete.setNome(rs.getString("first_name"));

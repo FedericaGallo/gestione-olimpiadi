@@ -140,10 +140,10 @@ public class Main {
             System.out.println("Classe sport");
 
             System.out.println("***Menu***");
-            System.out.println("1. Crea un nuovo atleta");
-            System.out.println("2. Modifica un atleta");
-            System.out.println("3. Visualizza la lista degli atleti");
-            System.out.println("4. Elimina un atlete");
+            System.out.println("1. Crea un nuovo sport");
+            System.out.println("2. Modifica uno sport");
+            System.out.println("3. Visualizza la lista degli sport");
+            System.out.println("4. Elimina un sport");
             System.out.println("9. Exit");
             System.out.print("inserisci la tua scelta: ");
             //System.out.print("test commit push");
@@ -225,9 +225,8 @@ public class Main {
 
             System.out.println("***Menu***");
             System.out.println("1. Crea una nuova partecipazione");
-            System.out.println("2. Modifica una partecipazione");
-            System.out.println("3. Visualizza la lista deglle partecipazioni alle Olimpiadi");
-            System.out.println("4. Elimina una partecipazione");
+            System.out.println("2. Visualizza la lista deglle partecipazioni alle Olimpiadi");
+            System.out.println("3. Elimina una partecipazione");
             System.out.println("9. Exit");
             System.out.print("inserisci la tua scelta: ");
             //System.out.print("test commit push");
@@ -238,12 +237,9 @@ public class Main {
                     createPartecipazione();
                     break;
                 case 2:
-
-                    break;
-                case 3:
                     readPartecipazione();
                     break;
-                case 4:
+                case 3:
                     deletePartecipazione();
                     break;
                 case 9:
@@ -464,7 +460,7 @@ public class Main {
 
         int i = 0;
         while(i<listaPartecipazioni.size()){
-            System.out.println(listaPartecipazioni.get(i).getId()+" "+listaPartecipazioni.get(i).getAtletaId()+" "+listaPartecipazioni.get(i).getOlimpiadeSportId());
+            System.out.println(listaPartecipazioni.get(i).getId()+". "+listaPartecipazioni.get(i).getAtletaCognome()+" "+listaPartecipazioni.get(i).getAtletaNome()+" "+listaPartecipazioni.get(i).getOlimpiadeAnno()+ " "+listaPartecipazioni.get(i).getOlimpiadePaeseOspitante()+ " " +listaPartecipazioni.get(i).getOlimpiadeSport());
             i++;}
 
     }
@@ -473,6 +469,7 @@ public class Main {
         System.out.println("inserisci l'id dell'atleta: ");
         Scanner scanner = new Scanner(System.in);
         int idAtleta = scanner.nextInt();
+        readGara();
         System.out.println("inserisci l'id della gara a cui partecipa: ");
         int idOlimpiadesSport = scanner.nextInt();
         OlimpiadeSportAtletaService oOlimpiadeSportAtletaService = new OlimpiadeSportAtletaService();

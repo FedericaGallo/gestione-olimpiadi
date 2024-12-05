@@ -1,4 +1,4 @@
-#Gestionale Olimpiadi
+# Gestionale Olimpiadi
 Si vuole creare un database in grado di tenere traccia degli sport che si giocano alle olimpiadi e agli atleti che partecipano in tale olimpiade. Realizzare:
 1.	 lo schema E-R;
 2.	lo schema logico;
