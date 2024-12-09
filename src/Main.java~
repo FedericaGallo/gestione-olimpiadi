@@ -228,7 +228,7 @@ public class Main {
             System.out.println("1. Crea una nuova partecipazione");
             System.out.println("2. Visualizza la lista deglle partecipazioni alle Olimpiadi");
             System.out.println("3. Elimina una partecipazione");
-            System.out.println("4. Visualizza gli atleti che partecipano a una gara");
+            System.out.println("3. Visualizza gli atleti che partecipano a una gara");
             System.out.println("9. Exit");
             System.out.print("inserisci la tua scelta: ");
             //System.out.print("test commit push");
@@ -242,9 +242,6 @@ public class Main {
                     readPartecipazione();
                     break;
                 case 3:
-                    deletePartecipazione();
-                    break;
-                case 4:
                     readPartecipazoneByGara();
                     break;
                 case 9:

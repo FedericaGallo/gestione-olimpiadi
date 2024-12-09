@@ -17,7 +17,7 @@ public class OlimpiadeSportAtletaRepository {
             Connection c = DbConnection.openConnection();
             //System.out.println("Connessione riuscita!");
             Statement stmt = c.createStatement();
-            stmt.execute("INSERT INTO olympics_sport_athlete VALUES('" + oOlympicsSportAthlete.getAtletaId() + "','" + oOlympicsSportAthlete.getOlimpiadeSportId() + "')");
+            stmt.execute("INSERT INTO olympics_sport_athlete VALUES('" + oOlympicsSportAthlete.getOlimpiadeSportId() + "', '" + oOlympicsSportAthlete.getAtletaId() + "')");
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println(e.getMessage());
             System.exit(0);
@@ -94,7 +94,7 @@ public class OlimpiadeSportAtletaRepository {
             Connection c = DbConnection.openConnection();
             //System.out.println("Connessione riuscita!");
             Statement stmt = c.createStatement();
-            stmt.execute("UPDATE olympics_sport_athlete SET id_olympics_sport='"+oOlimpiadeSportAtleta.getOlimpiadeSportId()+"', id_athlete='"+oOlimpiadeSportAtleta.getAtletaId()+"',result= '"+oOlimpiadeSportAtleta.getResult()+ "' WHERE id ="  + oOlimpiadeSportAtleta.getId());
+            stmt.execute("UPDATE olympics_sport_athlete SET id_olympics_sport= '"+oOlimpiadeSportAtleta.getOlimpiadeSportId()+"', id_athlete='"+oOlimpiadeSportAtleta.getAtletaId()+"',result= '"+oOlimpiadeSportAtleta.getResult()+ "' WHERE id = "  + oOlimpiadeSportAtleta.getId());
             System.out.println("model.dao.OlympicsSportAthlete aggiornato");
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println(e.getMessage());

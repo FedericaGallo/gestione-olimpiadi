@@ -38,7 +38,6 @@ public class AtletaRepository {
                 oAthlete.setAltezza(rs.getInt("height"));
                 oAthlete.setNazionalità(rs.getString("nationality"));
 
-
             }
 
         }catch (ClassNotFoundException | SQLException e) {
@@ -97,5 +96,33 @@ public class AtletaRepository {
             System.err.println(e.getMessage());
             System.exit(0);
         }
+    }
+
+    public ArrayList<Atleta> readPartecipazioneByGara(int id){
+        ArrayList<Atleta> oAtletaByGara = new ArrayList<>();
+        try {
+            Connection c = DbConnection.openConnection();
+            //System.out.println("Connessione riuscita!");
+            Statement stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT first_name, last_name, birth_date, height, nationality, a.id as id FROM athlete a " +
+                    "JOIN olympics_sport_athlete osa on a.id=osa.id_athlete " +
+                    "WHERE osa.id_olympics_sport =  " + id);
+            while (rs.next()) {
+                Atleta oAthlete = new Atleta();
+                oAthlete.setNome(rs.getString("first_name"));
+                oAthlete.setCognome(rs.getString("last_name"));
+                oAthlete.setId(rs.getInt("id"));
+                oAthlete.setDataNascita(rs.getDate("birth_date").toLocalDate());
+                oAthlete.setAltezza(rs.getInt("height"));
+                oAthlete.setNazionalità(rs.getString("nationality"));
+                oAtletaByGara.add(oAthlete);
+
+            }
+
+        }catch (ClassNotFoundException | SQLException e) {
+            System.err.println(e.getMessage());
+            System.exit(0);
+        }
+        return oAtletaByGara;
     }
 }

@@ -12,6 +12,7 @@ public class OlimpiadeSportAtletaService {
     OlimpiadeSportAtletaRepository olympicsSportAthleteRepository = new OlimpiadeSportAtletaRepository();
    AtletaRepository oAtletaRepository = new AtletaRepository();
     OlimpiadeSportRepository oOlimpiadeSportRepository = new OlimpiadeSportRepository();
+
     public void create(int idAtleta, int idOlimpiadeSport) {
         OlimpiadeSportAtleta oOlympicsSportAthlete = new OlimpiadeSportAtleta();
         Atleta oAtleta = oAtletaRepository.readAtletaByID(idAtleta);
